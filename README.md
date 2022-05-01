@@ -15,6 +15,8 @@ https://github.com/vim-denops/denops.vim
 
 https://github.com/Shougo/ddc.vim
 
+### getcmdcompletion() support
+
 ## Configuration
 
 ```vim
