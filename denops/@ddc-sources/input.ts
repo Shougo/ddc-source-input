@@ -14,12 +14,6 @@ export class Source extends BaseSource<Params> {
   async getCompletePosition(
     args: GetCompletePositionArguments<Params>,
   ): Promise<number> {
-    const mode = await fn.mode(args.denops);
-    if (mode != "c") {
-      // It must be command line mode
-      return Promise.resolve(-1);
-    }
-
     const cmdType = await fn.getcmdtype(args.denops);
     if (cmdType != "=" && cmdType != "@") {
       // No completion
