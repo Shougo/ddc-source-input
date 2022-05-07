@@ -25,7 +25,7 @@ Please install both "ddc.vim" and "denops.vim".
 https://github.com/Shougo/ddc.vim
 https://github.com/vim-denops/denops.vim
 
-Note: |getcmdcompletion()| support is needed.
+Note: |getcmdcompltype()| support is needed.
 
 
 ==============================================================================

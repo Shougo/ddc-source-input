@@ -33,8 +33,8 @@ export class Source extends BaseSource<Params> {
   }): Promise<Item[]> {
     // Get completion type
     const mode = await fn.getcmdtype(args.denops);
-    const completionType = (await fn.exists(args.denops, "*getcmdcompletion"))
-      ? (await args.denops.call("getcmdcompletion") as string)
+    const completionType = (await fn.exists(args.denops, "*getcmdcompltype"))
+      ? (await args.denops.call("getcmdcompltype") as string)
       : "";
     if (mode == "@" && completionType == "") {
       // No completion
