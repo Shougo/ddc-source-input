@@ -1,4 +1,4 @@
-# ddc-input
+# ddc-source-input
 
 `input()` completion for ddc.vim
 

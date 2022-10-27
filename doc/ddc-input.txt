@@ -1,24 +1,24 @@
-*ddc-input.txt*	input() completion for ddc.vim
+*ddc-source-input.txt*	input() completion for ddc.vim
 
 Author: Shougo <Shougo.Matsu at gmail.com>
 License: MIT license
 
-CONTENTS					*ddc-input-contents*
+CONTENTS					*ddc-source-input-contents*
 
-Introduction		|ddc-input-introduction|
-Install			|ddc-input-install|
-Examples		|ddc-input-examples|
+Introduction		|ddc-source-input-introduction|
+Install			|ddc-source-input-install|
+Examples		|ddc-source-input-examples|
 
 
 ==============================================================================
-INTRODUCTION				*ddc-input-introduction*
+INTRODUCTION				*ddc-source-input-introduction*
 
 This source collects candidates from |getcompletion()|.
 It works only for command line mode.
 
 
 ==============================================================================
-INSTALL						*ddc-input-install*
+INSTALL						*ddc-source-input-install*
 
 Please install both "ddc.vim" and "denops.vim".
 
@@ -29,7 +29,7 @@ Note: |getcmdcompltype()| support is needed.
 
 
 ==============================================================================
-EXAMPLES					*ddc-input-examples*
+EXAMPLES					*ddc-source-input-examples*
 >
 >
 	" Use input source.

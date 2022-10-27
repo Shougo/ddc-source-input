@@ -4,9 +4,9 @@ import {
   DdcOptions,
   Item,
   SourceOptions,
-} from "https://deno.land/x/ddc_vim@v2.2.0/types.ts";
-import { GetCompletePositionArguments } from "https://deno.land/x/ddc_vim@v2.2.0/base/source.ts";
-import { Denops, fn } from "https://deno.land/x/ddc_vim@v2.2.0/deps.ts";
+} from "https://deno.land/x/ddc_vim@v3.0.0/types.ts";
+import { GetCompletePositionArguments } from "https://deno.land/x/ddc_vim@v3.0.0/base/source.ts";
+import { Denops, fn } from "https://deno.land/x/ddc_vim@v3.0.0/deps.ts";
 
 type Params = Record<never, never>;
 
