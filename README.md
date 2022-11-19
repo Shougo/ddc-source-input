@@ -20,14 +20,12 @@ https://github.com/Shougo/ddc.vim
 ## Configuration
 
 ```vim
-" Use input source.
 call ddc#custom#patch_global('sources', ['input'])
 
-" Change source options
-call ddc#custom#patch_global('sourceOptions', {
-      \   'input': {
-      \     'mark': 'input',
-      \     'isVolatile': v:true,
+call ddc#custom#patch_global('sourceOptions', #{
+      \   input: #{
+      \     mark: 'input',
+      \     isVolatile: v:true,
       \   }
       \ })
 ```
