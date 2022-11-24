@@ -11,7 +11,7 @@ import { Denops, fn } from "https://deno.land/x/ddc_vim@v3.2.0/deps.ts";
 type Params = Record<never, never>;
 
 export class Source extends BaseSource<Params> {
-  async getCompletePosition(
+  override async getCompletePosition(
     args: GetCompletePositionArguments<Params>,
   ): Promise<number> {
     const cmdType = await fn.getcmdtype(args.denops);
@@ -24,7 +24,7 @@ export class Source extends BaseSource<Params> {
     return Promise.resolve(0);
   }
 
-  async gather(args: {
+  override async gather(args: {
     denops: Denops;
     context: Context;
     options: DdcOptions;
@@ -81,7 +81,7 @@ export class Source extends BaseSource<Params> {
     );
   }
 
-  params(): Params {
+  override params(): Params {
     return {};
   }
 }
