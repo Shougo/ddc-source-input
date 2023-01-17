@@ -4,7 +4,6 @@
 
 It works only for command line mode.
 
-
 ## Required
 
 ### denops.vim

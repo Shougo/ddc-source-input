@@ -27,6 +27,9 @@ https://github.com/vim-denops/denops.vim
 
 Note: |getcmdcompltype()| support is needed.
 
+Note: If you need to get fuzzy matched items, you need to set 'wildoptions'
+option contain "fuzzy".
+
 
 ==============================================================================
 EXAMPLES					*ddc-source-input-examples*
