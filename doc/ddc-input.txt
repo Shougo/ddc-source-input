@@ -13,7 +13,7 @@ Examples		|ddc-source-input-examples|
 ==============================================================================
 INTRODUCTION				*ddc-source-input-introduction*
 
-This source collects candidates from |getcompletion()|.
+This source collects items from |getcompletion()|.
 It works only for command line mode.
 
 
