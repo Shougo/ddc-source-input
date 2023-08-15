@@ -4,11 +4,11 @@ import {
   DdcOptions,
   Item,
   SourceOptions,
-} from "https://deno.land/x/ddc_vim@v3.4.0/types.ts";
-import { GetCompletePositionArguments } from "https://deno.land/x/ddc_vim@v3.4.0/base/source.ts";
-import { Denops, fn } from "https://deno.land/x/ddc_vim@v3.4.0/deps.ts";
+} from "https://deno.land/x/ddc_vim@v4.0.4/types.ts";
+import { GetCompletePositionArguments } from "https://deno.land/x/ddc_vim@v4.0.4/base/source.ts";
+import { Denops, fn } from "https://deno.land/x/ddc_vim@v4.0.4/deps.ts";
 
-type Params = Record<never, never>;
+type Params = Record<string, never>;
 
 export class Source extends BaseSource<Params> {
   override async getCompletePosition(
