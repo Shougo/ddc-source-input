@@ -3,12 +3,13 @@ import {
   Context,
   DdcOptions,
   Item,
+  Params,
   SourceOptions,
 } from "https://deno.land/x/ddc_vim@v4.0.4/types.ts";
 import { GetCompletePositionArguments } from "https://deno.land/x/ddc_vim@v4.0.4/base/source.ts";
 import { Denops, fn } from "https://deno.land/x/ddc_vim@v4.0.4/deps.ts";
 
-type Params = Record<string, never>;
+type Params = { gatherAll: boolean };
 
 export class Source extends BaseSource<Params> {
   override async getCompletePosition(
@@ -29,6 +30,7 @@ export class Source extends BaseSource<Params> {
     context: Context;
     options: DdcOptions;
     sourceOptions: SourceOptions;
+    sourceParams: Params;
     completeStr: string;
   }): Promise<Item[]> {
     // Get completion type
@@ -46,7 +48,7 @@ export class Source extends BaseSource<Params> {
     try {
       results = await fn.getcompletion(
         args.denops,
-        args.context.input,
+        args.sourceParams.gatherAll ? "" : args.context.input,
         mode == "=" ? "expression" : completionType,
       ) as string[];
     } catch (_) {
@@ -82,6 +84,6 @@ export class Source extends BaseSource<Params> {
   }
 
   override params(): Params {
-    return {};
+    return { gatherAll: false };
   }
 }

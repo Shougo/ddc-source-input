@@ -27,8 +27,20 @@ https://github.com/vim-denops/denops.vim
 
 Note: |getcmdcompltype()| support is needed.
 
-Note: If you need to get fuzzy matched items, you need to set 'wildoptions'
-option contain "fuzzy".
+Note: If you need to get fuzzy matched items, a quick solution is adding
+"fuzzy" to 'wildoptions'. However, this applies to the limited types of
+completion. For the full control, combine |ddc-source-input-param-gatherAll|
+with arbitrary matchers of |ddc-filters|.
+
+
+==============================================================================
+PARAMS                                               *ddc-source-input-params*
+
+                                            *ddc-source-input-param-gatherAll*
+gatherAll	(boolean)
+		Gather all candidates regardless of the current input. Useful
+		when combining with matchers of |ddc-filters| implementing
+		non-forward-matching algorithms (e.g., fuzzy matching).
 
 
 ==============================================================================
