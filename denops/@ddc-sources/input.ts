@@ -3,13 +3,14 @@ import {
   Context,
   DdcOptions,
   Item,
-  Params,
   SourceOptions,
-} from "https://deno.land/x/ddc_vim@v4.0.4/types.ts";
-import { GetCompletePositionArguments } from "https://deno.land/x/ddc_vim@v4.0.4/base/source.ts";
-import { Denops, fn } from "https://deno.land/x/ddc_vim@v4.0.4/deps.ts";
+} from "https://deno.land/x/ddc_vim@v4.3.1/types.ts";
+import { GetCompletePositionArguments } from "https://deno.land/x/ddc_vim@v4.3.1/base/source.ts";
+import { Denops, fn } from "https://deno.land/x/ddc_vim@v4.3.1/deps.ts";
 
-type Params = { gatherAll: boolean };
+type Params = {
+  gatherAll: boolean
+};
 
 export class Source extends BaseSource<Params> {
   override async getCompletePosition(
@@ -59,21 +60,24 @@ export class Source extends BaseSource<Params> {
       return [];
     }
 
-    let prefix = results[0].toLowerCase();
-    results.forEach((word) => {
-      while (!word.toLowerCase().startsWith(prefix)) {
+    if (!args.sourceParams.gatherAll) {
+      let prefix = results[0].toLowerCase();
+      results.forEach((word) => {
+        while (!word.toLowerCase().startsWith(prefix)) {
+          prefix = prefix.slice(0, -1);
+        }
+      });
+
+      const input = args.context.input.toLowerCase();
+      while (!input.endsWith(prefix)) {
         prefix = prefix.slice(0, -1);
       }
-    });
+      if (prefix != "" && prefix != args.completeStr) {
+        prefix = prefix.substring(args.completeStr.length);
+        results = results.map((word) => word.substring(prefix.length));
+      }
+    }
 
-    const input = args.context.input.toLowerCase();
-    while (!input.endsWith(prefix)) {
-      prefix = prefix.slice(0, -1);
-    }
-    if (prefix != "" && prefix != args.completeStr) {
-      prefix = prefix.substring(args.completeStr.length);
-      results = results.map((word) => word.substring(prefix.length));
-    }
     return results.map(
       (
         word,
@@ -84,6 +88,8 @@ export class Source extends BaseSource<Params> {
   }
 
   override params(): Params {
-    return { gatherAll: false };
+    return {
+      gatherAll: false
+    };
   }
 }
