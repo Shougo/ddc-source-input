@@ -8,9 +8,7 @@ import {
 import { GetCompletePositionArguments } from "https://deno.land/x/ddc_vim@v4.3.1/base/source.ts";
 import { Denops, fn } from "https://deno.land/x/ddc_vim@v4.3.1/deps.ts";
 
-type Params = {
-  gatherAll: boolean
-};
+type Params = Record<never, string>;
 
 export class Source extends BaseSource<Params> {
   override async getCompletePosition(
@@ -49,7 +47,7 @@ export class Source extends BaseSource<Params> {
     try {
       results = await fn.getcompletion(
         args.denops,
-        args.sourceParams.gatherAll ? "" : args.context.input,
+        args.context.input,
         mode == "=" ? "expression" : completionType,
       ) as string[];
     } catch (_) {
@@ -60,22 +58,20 @@ export class Source extends BaseSource<Params> {
       return [];
     }
 
-    if (!args.sourceParams.gatherAll) {
-      let prefix = results[0].toLowerCase();
-      results.forEach((word) => {
-        while (!word.toLowerCase().startsWith(prefix)) {
-          prefix = prefix.slice(0, -1);
-        }
-      });
-
-      const input = args.context.input.toLowerCase();
-      while (!input.endsWith(prefix)) {
+    let prefix = results[0].toLowerCase();
+    results.forEach((word) => {
+      while (!word.toLowerCase().startsWith(prefix)) {
         prefix = prefix.slice(0, -1);
       }
-      if (prefix != "" && prefix != args.completeStr) {
-        prefix = prefix.substring(args.completeStr.length);
-        results = results.map((word) => word.substring(prefix.length));
-      }
+    });
+
+    const input = args.context.input.toLowerCase();
+    while (!input.endsWith(prefix)) {
+      prefix = prefix.slice(0, -1);
+    }
+    if (prefix != "" && prefix != args.completeStr) {
+      prefix = prefix.substring(args.completeStr.length);
+      results = results.map((word) => word.substring(prefix.length));
     }
 
     return results.map(
@@ -88,8 +84,6 @@ export class Source extends BaseSource<Params> {
   }
 
   override params(): Params {
-    return {
-      gatherAll: false
-    };
+    return {};
   }
 }

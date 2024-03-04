@@ -29,19 +29,13 @@ Note: |getcmdcompltype()| support is needed.
 
 Note: If you need to get fuzzy matched items, a quick solution is adding
 "fuzzy" to 'wildoptions'. However, this applies to the limited types of
-completion. For the full control, combine |ddc-source-input-param-gatherAll|
-with arbitrary matchers of |ddc-filters|.
+completion. For the full control, please set
+|ddc-source-option-replaceSourceInputPattern| with arbitrary matchers of
+|ddc-filters|.
 
 
 ==============================================================================
 PARAMS                                               *ddc-source-input-params*
-
-                                            *ddc-source-input-param-gatherAll*
-gatherAll	(boolean)
-		Gather all items regardless of the current input. It is useful
-		when if you use non-forward-matching filter algorithms (e.g.,
-		fuzzy matching).
-
 
 ==============================================================================
 EXAMPLES                                           *ddc-source-input-examples*
