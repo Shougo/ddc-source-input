@@ -1,12 +1,14 @@
 import {
   BaseSource,
-  Context,
-  DdcOptions,
-  Item,
-  SourceOptions,
-} from "https://deno.land/x/ddc_vim@v4.3.1/types.ts";
-import { GetCompletePositionArguments } from "https://deno.land/x/ddc_vim@v4.3.1/base/source.ts";
-import { Denops, fn } from "https://deno.land/x/ddc_vim@v4.3.1/deps.ts";
+  type Context,
+  type DdcOptions,
+  type Item,
+  type SourceOptions,
+} from "jsr:@shougo/ddc-vim@6.0.0/types";
+import { type GetCompletePositionArguments } from "jsr:@shougo/ddc-vim@6.0.0/source";
+
+import type { Denops } from "jsr:@denops/core@^7.0.0";
+import * as fn from "jsr:@denops/std@7.0.1/function";
 
 type Params = Record<never, string>;
 
